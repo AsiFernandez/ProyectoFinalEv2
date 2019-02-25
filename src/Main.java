@@ -20,9 +20,10 @@ public class Main {
 			System.out.println("Menú:");
             System.out.println(" 1. Añadir Comercial");
             System.out.println(" 2. Añadir Repartidor");
-            System.out.println(" 3. Listar empleados");
-            System.out.println(" 4. Eliminar Trabajador");
-            System.out.println(" 5. Salir");
+            System.out.println(" 3. Listar Comerciales");
+            System.out.println(" 4. Listar Repartidores");
+            System.out.println(" 5. Eliminar Comercial");
+            System.out.println(" 6. Salir");
            
             // Leer opción
             opcion = scan.nextInt();
@@ -52,7 +53,7 @@ public class Main {
                 	aniadirRepartidor(nombre, edad, salario, zona, 2);
                     break;
                 case 3:
-                	listarTrabajadores(empleados);
+                	listarComerciales(ArrayList<Comercial> comerciales);
                     break;
                 case 4:
                 	System.out.println("Introduce un nombre");
