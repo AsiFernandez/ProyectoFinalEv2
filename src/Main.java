@@ -22,7 +22,7 @@ public class Main {
             System.out.println(" 2. Añadir Repartidor");
             System.out.println(" 3. Listar Comerciales");
             System.out.println(" 4. Listar Repartidores");
-            System.out.println(" 5. Eliminar Comercial");
+            System.out.println(" 5. Modificar repartidor");
             System.out.println(" 6. Salir");
            
             // Leer opción
@@ -53,24 +53,40 @@ public class Main {
                 	aniadirRepartidor(nombre, edad, salario, zona, 2);
                     break;
                 case 3:
-                	listarComerciales(ArrayList<Comercial> comerciales);
+                	listarComerciales(comerciales);
                     break;
                 case 4:
-                	System.out.println("Introduce un nombre");
-                	String nombreTr = scan.nextLine();
-                	eliminarTrabajador(nombreTr);
+                	listarRepartidores(repartidores);
                     break;
-                 	
+                case 5:
+                	System.out.print("introduce el nombre de un repartidor para modificar el salario");
+                	String nombreM = scan.nextLine();
+                	modificarSRepartidor(nombreM);
+                    break;
                 default:
                     System.out.println("Opción incorrecta. Elija otra");
             } // Fin switch
-        }while(opcion != 5);
+        }while(opcion != 6);
 		
 
 		
 		
 	}
 
+	
+	private static void modificarSRepartidor(String nombre) {
+		for(int i = 0; i< repartidores.size(); i++) {
+			if(repartidores.get(i).getNombre().equalsIgnoreCase(nombre)) {
+				System.out.println("introduce el nuevo salario");
+				int nSalario= scan.nextInt();
+				repartidores.get(i).setSalario(nSalario);
+			}
+		}
+		
+	}
+
+
+	//METODOS PARA ELIMINAR COMERCIAL Y REPARTIDOR
 	private static void eliminarComercial(String nombreTr) {
 		for(int i= 0; i>comerciales.size(); i++) {
 			if(comerciales.get(i).getNombre().equalsIgnoreCase(nombreTr)) {
@@ -89,20 +105,25 @@ public class Main {
 		
 	}
 
-	private static void listarComerciales(ArrayList<Empleado> empleados) {
+	
+	//METODOS PARA LISTAR LOS COMERCIALES Y REPARTIDORES
+	private static void listarComerciales(ArrayList<Comercial> comerciales) {
 		for( Comercial comercial: comerciales) {
-			System.out.println("Edad: " + comercial.getEdad() +" Nombre: "+  comercial.getNombre() + " Salario " + comercial.getSalario());
+			System.out.println("Edad: " + comercial.getEdad() +" --- Nombre: "+  comercial.getNombre() + " --- Salario " + comercial.getSalario() + " --- Comision: "+ comercial.getComision());
 			
 		}
 	}
 	
 	private static void listarRepartidores(ArrayList<Repartidor> repartidores) {
 		for( Repartidor repartidor: repartidores) {
-			System.out.println("Edad: " + repartidor.getEdad() +" Nombre: "+  repartidor.getNombre() + " Salario " + repartidor.getSalario()+ " Zona: "+ repartidor.getZona());
+			System.out.println("Edad: " + repartidor.getEdad() +" --- Nombre: "+  repartidor.getNombre() + " --- Salario " + repartidor.getSalario()+ " --- Zona: "+ repartidor.getZona());
 			
 		}
 	}
 
+	
+	
+	//METODOS PARA AÑADIR COMERCIALES Y REPARTIDORES
 	private static void aniadirRepartidor(String nombre, int edad, double salario, String zona, int identificador) {
 		Repartidor repartidor = new Repartidor(nombre, edad, salario, zona, identificador);
 		repartidores.add(repartidor);
