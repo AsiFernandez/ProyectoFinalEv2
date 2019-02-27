@@ -59,30 +59,54 @@ public class Main {
                 	listarRepartidores(repartidores);
                     break;
                 case 5:
-                	System.out.print("introduce el nombre de un repartidor para modificar el salario");
-                	String nombreM = scan.nextLine();
-                	modificarSRepartidor(nombreM);
+                	System.out.println("Que apartado del repartidor deseas modificar");
+                	System.out.println("Nombre, Edad, Salario, Zona");
+                	String apartado = scan.nextLine();
+                	System.out.print("que repartidor quieres modificar");
+                	String nombreR = scan.nextLine();
+                	modificarSRepartidor(nombreR, apartado);
                     break;
                 default:
                     System.out.println("Opción incorrecta. Elija otra");
             } // Fin switch
         }while(opcion != 6);
-		
+}
 
-		
-		
-	}
-
-	
-	private static void modificarSRepartidor(String nombre) {
+	//Modificar repartidores Opcion a modificar cualquiera de los parametros
+	private static void modificarSRepartidor(String nombreR, String apartado) {
 		for(int i = 0; i< repartidores.size(); i++) {
-			if(repartidores.get(i).getNombre().equalsIgnoreCase(nombre)) {
-				System.out.println("introduce el nuevo salario");
-				int nSalario= scan.nextInt();
-				repartidores.get(i).setSalario(nSalario);
+			if(apartado.equalsIgnoreCase("nombre")) {
+					if(repartidores.get(i).getNombre().equalsIgnoreCase(nombreR)) {
+						System.out.println("introduce el nuevo nombre");
+						String nombre= scan.nextLine();
+						repartidores.get(i).setNombre(nombre);
+					
+				}
+			}else if(apartado.equalsIgnoreCase("edad")) {
+				
+					if(repartidores.get(i).getNombre().equalsIgnoreCase(nombreR)) {
+						System.out.println("introduce la nueva edad");
+						int edad= scan.nextInt();
+						repartidores.get(i).setEdad(edad);
+					
+				}
+			}else if(apartado.equalsIgnoreCase("salario")) {
+				
+					if(repartidores.get(i).getNombre().equalsIgnoreCase(nombreR)) {
+						System.out.println("introduce el nuevo salario");
+						int Salario= scan.nextInt();
+						repartidores.get(i).setSalario(Salario);
+					
+				}
+			}else if(apartado.equalsIgnoreCase("zona")) {
+				
+					if(repartidores.get(i).getNombre().equalsIgnoreCase(nombreR)) {
+						System.out.println("introduce la nueva zona");
+						String zona = scan.nextLine();
+						repartidores.get(i).setZona(zona);
+					}	
 			}
 		}
-		
 	}
 
 
@@ -135,6 +159,11 @@ public class Main {
 		comerciales.add(comercial);
 		
 	}
+	
+	//METODOS PARA BUSCAR LOS DATOS DE UN TRABAJADOR
+	
+	
+	
 		
 		
 }
